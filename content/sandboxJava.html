@@ -108,6 +108,22 @@
       cursor: not-allowed;
     }
 
+    button#share {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button#share:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     /* ============================================================
        Panneaux Code / Résultat + séparateur redimensionnable
        ============================================================ */
@@ -267,7 +283,7 @@
 <body>
 
   <header>
-    <h1>Java Sandbox — dev.java</h1>
+    <h1>Java Sandbox</h1>
     <label class="toggle-theme">
       <input type="checkbox" id="themeToggle">
       Mode sombre
@@ -276,6 +292,7 @@
       <input type="checkbox" id="detailsToggle">
       Mode détails
     </label>
+    <button id="share">🔗 Partager</button>
     <button id="run">▶ Run (Ctrl+Enter)</button>
   </header>
 
@@ -332,6 +349,7 @@ IO.println(t);`;
     // ============================================================
     const outputEl = document.getElementById("output");
     const runBtn = document.getElementById("run");
+    const shareBtn = document.getElementById("share");
     const detailsToggle = document.getElementById("detailsToggle");
     const themeToggle = document.getElementById("themeToggle");
     const resizer = document.getElementById("resizer");
@@ -559,6 +577,49 @@ IO.println(t);`;
       }
     }
 
+    // ============================================================
+    // Partage : construit l'URL courante avec le code de l'éditeur
+    // encodé en base64 dans le paramètre "snippet" (même encodage que
+    // celui utilisé pour l'appel API et pour readInitialCode), puis la
+    // copie dans le presse-papier.
+    // ============================================================
+    async function shareCode() {
+      const source = editor.state.doc.toString();
+
+      const url = new URL(window.location.href);
+      // URLSearchParams s'occupe de percent-encoder correctement les
+      // caractères spéciaux du base64 (+, /, =) dans la query string.
+      url.searchParams.set("snippet", asciiToBase64(source));
+
+      const shareUrl = url.toString();
+      const originalLabel = "🔗 Partager";
+
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        shareBtn.textContent = "✅ Lien copié !";
+      } catch (err) {
+        // Fallback si l'API Clipboard n'est pas disponible (contexte
+        // non sécurisé, permission refusée, etc.)
+        try {
+          const tmp = document.createElement("textarea");
+          tmp.value = shareUrl;
+          tmp.style.position = "fixed";
+          tmp.style.opacity = "0";
+          document.body.appendChild(tmp);
+          tmp.select();
+          document.execCommand("copy");
+          document.body.removeChild(tmp);
+          shareBtn.textContent = "✅ Lien copié !";
+        } catch (fallbackErr) {
+          shareBtn.textContent = "❌ Échec de la copie";
+        }
+      }
+
+      setTimeout(() => {
+        shareBtn.textContent = originalLabel;
+      }, 2000);
+    }
+
     // ------------------------------------------------------------
     // Rendu du résultat
     // ------------------------------------------------------------
@@ -691,6 +752,7 @@ IO.println(t);`;
     // Câblage final
     // ============================================================
     runBtn.addEventListener("click", runCode);
+    shareBtn.addEventListener("click", shareCode);
     setupThemeToggle();
     setupDetailsToggle();
     setupResizer();
