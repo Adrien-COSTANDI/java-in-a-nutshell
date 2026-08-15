@@ -1,43 +1,75 @@
-ça se trouve [[0. Zéparti|ici !]]
+# Préambule
 
-### MA TODO LIST :
+Vous vous lancez dans du lourd là, je vous recommande de prendre un petit carnet avec vous et de noter les trucs que vous jugez les plus pertinents, qui vous seront utiles.
 
-- [x] cast de types primitifs (on met pas un long dans un int) (à faire dans opérateurs ?)
-- [x] opérateurs binaires sur 2 types différents ? (int + float = ?)
-- [x] cas spécial de la concaténation de String
-- [x] parler des méthodes
-- [x] parler du return dans les méthodes
-- [x] parler du new pour les constructeurs de classe 
-- [ ] écrire une classe semi-complète, puis l'expliquer, puis ajouter petit à petit des trucs (get, méthodes plus complexes...)
-- [ ] enum
-- [ ] trouver des idées d'exercices
-- [ ] parler des librairies
-- [x] scope des variables
-- [ ] héritage (Object)
-- [ ] interfaces
-- [ ] String
-- [ ] Wrappers
-- [ ] héritage
-- [ ] exceptions
-- [ ] programmation fonctionnelle (lambdas, stream)
-- [ ] 
+Surtout la règle N°1 dans le monde du développement c'est qu'il faut pratiquer, essayer, se tromper et recommencer. L'apprentissage d'un langage de programmation ne se fait pas en lisant un cours mais surtout en codant. Ce cours ne sert que de base théorique pour lancer le premier élan qui vous animera dans le développement passionné de vos idées farfelues.
 
-une classe c'est un moule (une forme), une instance est une gauffre
-champs static ne veut pas dire que c'est immobile (final)
-méthode static (exemple des Math.pow() n'est pas lié à une instance)
-on peut accéder au static depuis instance, mais pas l'inverse
+Quand j'aborderai une notion, plutôt que de la lire et de passer à la suivante, essayez de vous poser la question "Et moi ? Comment je l'utiliserais concrètement ?". Inventez vos propres exercices pour vous mettre à l'épreuve, ou trouvez en. Je tenterai d'en proposer quand les bases seront passées mais je ne suis pas à votre place pour déterminer que vous avez bien compris les principes abordés.
 
-la class à Dallas
+En bref, la programmation ce n'est pas vraiment un travail "d'apprendre par cœur" mais surtout de "comprendre" et "maîtriser".
 
-visibilité package
+Amusez vous bien !
 
-<iframe src="http://localhost:8000/sandboxJava.html?snippet=Ly8gU3dpdGNoIG9uIFNlYWxlZCBUeXBlcyB3aXRoIFJlY29yZCBQYXR0ZXJucwpzZWFsZWQgaW50ZXJmYWNlIFNoYXBlIHBlcm1pdHMgUmVjdGFuZ2xlLCBTcXVhcmUsIENpcmNsZSB7fQpyZWNvcmQgUG9pbnQoZG91YmxlIHgsIGRvdWJsZSB5KSB7fQpyZWNvcmQgRWRnZShkb3VibGUgdSwgZG91YmxlIHYpIHsKICAgIHB1YmxpYyBkb3VibGUgc2NhbGFyKEVkZ2Ugb3RoZXIpIHsKICAgICAgICByZXR1cm4gdGhpcy51Km90aGVyLnUgKyB0aGlzLnYqb3RoZXIudjsKICAgIH0KICAgIHB1YmxpYyBkb3VibGUgbm9ybSgpIHsKICAgICAgICByZXR1cm4gTWF0aC5zcXJ0KHRoaXMuc2NhbGFyKHRoaXMpKTsKICAgIH0KfQpyZWNvcmQgU3F1YXJlKFBvaW50IHAsIEVkZ2UgZSkgaW1wbGVtZW50cyBTaGFwZSB7fQpyZWNvcmQgUmVjdGFuZ2xlKFBvaW50IHAsIEVkZ2UgZTEsIEVkZ2UgZTIpIGltcGxlbWVudHMgU2hhcGUgewogICAgcHVibGljIFJlY3RhbmdsZSB7CiAgICAgICAgaWYgKE1hdGguYWJzKGUxLnNjYWxhcihlMikpID4gMUUtMDYpCiAgICAgICAgICAgIHRocm93IG5ldyBJbGxlZ2FsQXJndW1lbnRFeGNlcHRpb24oIkVkZ2VzIG11c3QgYmUgb3J0aG9nb25hbCIpOwogICAgfQp9CnJlY29yZCBDaXJjbGUoUG9pbnQgY2VudGVyLCBkb3VibGUgcmFkaXVzKSBpbXBsZW1lbnRzIFNoYXBlIHt9CgpUb0RvdWJsZUZ1bmN0aW9uPFNoYXBlPiBzdXJmYWNlID0gc2hhcGUgLT4gewogICAgcmV0dXJuIHN3aXRjaCAoc2hhcGUpIHsKICAgICAgICBjYXNlIFJlY3RhbmdsZShQb2ludCBfLCBFZGdlIGUxLCBFZGdlIGUyKSAtPiBNYXRoLnNxcnQoZTEubm9ybSgpICogZTIubm9ybSgpKTsKICAgICAgICBjYXNlIFNxdWFyZShQb2ludCBfLCBFZGdlIGUpIC0-IGUubm9ybSgpOwogICAgICAgIGNhc2UgQ2lyY2xlKFBvaW50IF8sIGRvdWJsZSByYWRpdXMpIC0-IE1hdGguUEkgKiByYWRpdXMgKiByYWRpdXM7CiAgICB9Owp9OwpGdW5jdGlvbjxTaGFwZSwgU3RyaW5nPiB0b1N0cmluZyA9IHNoYXBlIC0-CiAgICAgICAgc3dpdGNoIChzaGFwZSkgewogICAgICAgICAgICBjYXNlIFJlY3RhbmdsZSByIC0-ICJSZWN0YW5nbGUgLT4gJS4yZiIuZm9ybWF0dGVkKHN1cmZhY2UuYXBwbHlBc0RvdWJsZShyKSk7CiAgICAgICAgICAgIGNhc2UgU3F1YXJlIHMgICAgLT4gIlNxdWFyZSAgICAtPiAlLjJmIi5mb3JtYXR0ZWQoc3VyZmFjZS5hcHBseUFzRG91YmxlKHMpKTsKICAgICAgICAgICAgY2FzZSBDaXJjbGUgYyAgICAtPiAiQ2lyY2xlICAgIC0-ICUuMmYiLmZvcm1hdHRlZChzdXJmYWNlLmFwcGx5QXNEb3VibGUoYykpOwogICAgICAgIH07CgpTaGFwZSBzMCA9IG5ldyBTcXVhcmUobmV3IFBvaW50KDBkLCAwZCksIG5ldyBFZGdlKDBkLCAwZCkpOwpTaGFwZSBzMSA9IG5ldyBTcXVhcmUobmV3IFBvaW50KDBkLCAxZCksIG5ldyBFZGdlKDFkLCAwZCkpOwpTaGFwZSBzMiA9IG5ldyBTcXVhcmUobmV3IFBvaW50KDJkLCAzZCksIG5ldyBFZGdlKDFkLCAxZCkpOwpTaGFwZSBzMyA9IG5ldyBTcXVhcmUobmV3IFBvaW50KDVkLCAwZCksIG5ldyBFZGdlKDFkLCAyZCkpOwpSZWN0YW5nbGUgcjAgPSBuZXcgUmVjdGFuZ2xlKG5ldyBQb2ludCgwZCwgMGQpLCBuZXcgRWRnZSgwZCwgMGQpLCBuZXcgRWRnZSgwZCwgMGQpKTsKUmVjdGFuZ2xlIHIxID0gbmV3IFJlY3RhbmdsZShuZXcgUG9pbnQoMWQsIDJkKSwgbmV3IEVkZ2UoMWQsIDBkKSwgbmV3IEVkZ2UoMGQsIDBkKSk7ClJlY3RhbmdsZSByMiA9IG5ldyBSZWN0YW5nbGUobmV3IFBvaW50KDRkLCAxZCksIG5ldyBFZGdlKDBkLCAwZCksIG5ldyBFZGdlKDFkLCAwZCkpOwpSZWN0YW5nbGUgcjMgPSBuZXcgUmVjdGFuZ2xlKG5ldyBQb2ludCgwZCwgM2QpLCBuZXcgRWRnZSgxZCwgMGQpLCBuZXcgRWRnZSgwZCwgMWQpKTsKUmVjdGFuZ2xlIHI0ID0gbmV3IFJlY3RhbmdsZShuZXcgUG9pbnQoMmQsIDNkKSwgbmV3IEVkZ2UoMWQsIDFkKSwgbmV3IEVkZ2UoMWQsIC0xZCkpOwpDaXJjbGUgYzEgPSBuZXcgQ2lyY2xlKG5ldyBQb2ludCgwZCwgMGQpLCAxZCk7CkNpcmNsZSBjMiA9IG5ldyBDaXJjbGUobmV3IFBvaW50KDJkLCAzZCksIDJkKTsKdmFyIHNoYXBlcyA9IExpc3Qub2YoczAsIHMxLCBzMiwgczMsIHIwLCByMSwgcjIsIHIzLCByNCwgYzEsIGMyKTsKc2hhcGVzLnN0cmVhbSgpCiAgICAgICAgLm1hcCh0b1N0cmluZykKICAgICAgICAuZm9yRWFjaChTeXN0ZW0ub3V0OjpwcmludGxuKTsK" width="100%" height="540px"></iframe>
+─── Découverte ───
 
-Un peu de théorie avec JVM, GC, JIT, compilation, exécution...
+[[1. Java|1. C'est quoi java ?]]
+[[2. Fonctionnement de Java|2. Fonctionnement de Java]]
+[[3. JRE ou JDK]]
+[[4. Installer un IDE]]
+[[5. Hello World!]]
+[[6. Structure d'un programme]]
+[[7. Syntaxe]]
 
-Programmation Orientée Objet
+7.5 diapo récap
 
-%% Jupyter notebook pour java ? https://github.com/forax/java-guide
+─── Fondamentaux ───
 
+[[8. Variables]]
+[[9. Opérateurs]]
+[[10. Expression vs instruction (statement)]]
+[[11. if, switch-case|11. Les conditions]]
+[[12. for, while, do while|12. Les boucles]]
 
+─── Outils ───
+
+12.5 diapo recap
+
+[[13. Les méthodes]]
+[[14. Les chaînes de caractères]]
+[[15. Les tableaux]]
+
+─── POO — Fondations ───
+
+[[16. Les objets (Partie 1)]]
+[[17. La mémoire en Java]]
+[[18. Les objets (Partie 2)]]
+[[19. L'encapsulation]]
+[[20. Les exceptions]]
+
+─── POO — Types avancés ───
+
+[[21. equals et hashCode]]
+[[22. Les classes abstraites]]
+[[23. Les interfaces]]
+[[24. Les records]]
+[[25. Les énumérations]]
+[[26. Les classes internes]]
+
+─── Structures de données ───
+
+[[27. Les génériques]]
+[[28. Les wrappers]]
+[[29. Les collections]]
+[[30. Mutable et Immuable]]
+
+─── Programmation fonctionnelle ───
+
+[[31. La programmation fonctionnelle]]
+[[32. Les Streams]]
+[[33. Le pattern matching]]
+
+─── Écosystème ───
+
+[[34. Librairies et frameworks]]
+[[35. Exercices]]
 
