@@ -2,7 +2,7 @@
 configuration:
   pageTitle: Java in a nutshell
   pageTitleSuffix: ""
-  enableSPA: false
+  enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
