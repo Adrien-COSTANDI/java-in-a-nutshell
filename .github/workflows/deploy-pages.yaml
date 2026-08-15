@@ -32,13 +32,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Install Quartz plugins
-        run: npm run install-plugins
+        run: npm ci
 
       - name: Build Quartz
-        run: npx quartz build
+        run: npm run build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
