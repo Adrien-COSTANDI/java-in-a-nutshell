@@ -34,12 +34,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check Quartz permissions
+      - name: Debug Quartz installation
         run: |
-          ls -la node_modules/.bin/quartz
-          ls -la node_modules/quartz/cli
-          file node_modules/.bin/quartz
-          head -n 1 node_modules/.bin/quartz
+          echo "=== package.json ==="
+          cat package.json
+
+          echo "=== node_modules/.bin ==="
+          ls -la node_modules/.bin || true
+
+          echo "=== quartz directories ==="
+          find node_modules -maxdepth 3 -iname '*quartz*' -print || true
+
+          echo "=== npm quartz ==="
+          npm ls quartz || true
+
+          echo "=== npm bin ==="
+          npm exec -- npm bin || true
 
       - name: Install Quartz plugins
         run: npx quartz plugin install
