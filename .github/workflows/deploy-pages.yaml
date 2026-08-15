@@ -35,10 +35,10 @@ jobs:
         run: npm install
 
       - name: Install Quartz plugins
-        run: npm run quartz -- plugin install
+        run: npm run install-plugins
 
       - name: Build Quartz
-        run: npm run quartz -- build
+        run: npx quartz build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
