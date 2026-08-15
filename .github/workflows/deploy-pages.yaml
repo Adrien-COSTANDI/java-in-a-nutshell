@@ -34,28 +34,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Debug Quartz installation
-        run: |
-          echo "=== package.json ==="
-          cat package.json
-
-          echo "=== node_modules/.bin ==="
-          ls -la node_modules/.bin || true
-
-          echo "=== quartz directories ==="
-          find node_modules -maxdepth 3 -iname '*quartz*' -print || true
-
-          echo "=== npm quartz ==="
-          npm ls quartz || true
-
-          echo "=== npm bin ==="
-          npm exec -- npm bin || true
-
       - name: Install Quartz plugins
-        run: npx quartz plugin install
+        run: npm run quartz -- plugin install
 
       - name: Build Quartz
-        run: npx quartz build
+        run: npm run quartz -- build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
