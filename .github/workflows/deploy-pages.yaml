@@ -34,6 +34,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check Quartz permissions
+        run: |
+          ls -la node_modules/.bin/quartz
+          ls -la node_modules/quartz/cli
+          file node_modules/.bin/quartz
+          head -n 1 node_modules/.bin/quartz
+
       - name: Install Quartz plugins
         run: npx quartz plugin install
 
