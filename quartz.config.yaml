@@ -172,13 +172,6 @@ plugins:
       position: left
       priority: 50
       display: desktop-only
-  - source: github:quartz-community/graph
-    name: graph-mobile
-    enabled: true
-    layout:
-      position: afterBody
-      priority: 50
-      display: mobile-only
   - source: "@quartz-community/search"
     enabled: true
     layout:
