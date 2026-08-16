@@ -1,3 +1,36 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+@media all and not ($mobile) {
+    .page[data-frame="default"]>#quartz-body {
+        grid-template-columns: $sidePanelWidth 1fr;
+    }
+    div.sidebar.right {
+        display: none !important;
+    }
+}
+
+
+body a.internal-link {
+    background-color: unset !important;
+}
+
+html[saved-theme="light"] {
+    & > body figure[data-rehype-pretty-code-figure] {
+        background-color: rgb(240, 240, 240);
+        & > pre {
+            padding: 0;
+        }
+    }
+}
+
+html[saved-theme="dark"] {
+    & > body figure[data-rehype-pretty-code-figure] {
+        background-color: rgb(15, 15, 15);
+
+        &>pre {
+            padding: 0;
+        }
+    }
+}
