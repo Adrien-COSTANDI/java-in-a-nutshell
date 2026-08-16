@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
+  locale: fr-FR
   baseUrl: Adrien-COSTANDI.github.io/java-in-a-nutshell
   ignorePatterns:
     - private
@@ -84,8 +84,9 @@ plugins:
     enabled: true
     order: 50
     layout:
-      position: right
+      position: left
       priority: 30
+      display: desktop-only
   - source: "@quartz-community/crawl-links"
     enabled: true
     options:
@@ -159,17 +160,25 @@ plugins:
   - source: "@quartz-community/folder-page"
     enabled: true
   - source: "@quartz-community/tag-page"
-    enabled: true
+    enabled: false
   - source: "@quartz-community/explorer"
+    enabled: false
+    layout:
+      position: left
+      priority: 50
+  - source: github:quartz-community/graph
     enabled: true
     layout:
       position: left
       priority: 50
-  - source: "@quartz-community/graph"
+      display: desktop-only
+  - source: github:quartz-community/graph
+    name: graph-mobile
     enabled: true
     layout:
-      position: right
-      priority: 10
+      position: afterBody
+      priority: 50
+      display: mobile-only
   - source: "@quartz-community/search"
     enabled: true
     layout:
@@ -181,10 +190,10 @@ plugins:
   - source: "@quartz-community/backlinks"
     enabled: true
     layout:
-      position: right
+      position: afterBody
       priority: 50
   - source: "@quartz-community/article-title"
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 10
@@ -233,8 +242,8 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        GitHub: https://github.com/Adrien-COSTANDI/java-in-a-nutshell
+        Sandbox-Java: https://adrien-costandi.github.io/sandbox-java/sandboxJava.html
     layout:
       position: footer
       priority: 50
