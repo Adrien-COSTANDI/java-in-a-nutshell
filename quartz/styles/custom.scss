@@ -9,6 +9,10 @@
     div.sidebar.right {
         display: none !important;
     }
+    div#quartz-root.page div#quartz-body {
+        width: 100% !important;
+        max-width: unset !important;
+    }
 }
 
 
