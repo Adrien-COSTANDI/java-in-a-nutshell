@@ -6,9 +6,6 @@
     .page[data-frame="default"]>#quartz-body {
         grid-template-columns: $sidePanelWidth 1fr;
     }
-    .page>#quartz-body .sidebar {
-        padding: 0;
-    }
     div.sidebar.right {
         display: none !important;
     }
